@@ -1,9 +1,11 @@
 [Unit]
-Description=mkosi for %I
+Description=mkosi build for %I
+After=network-online.target
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/mkosi --default %i --force --postinst-script %i
+ExecStart=/usr/bin/nspawn-builder %i
+
 [Install]
 WantedBy=multi-user.target
